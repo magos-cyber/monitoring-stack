@@ -4,9 +4,9 @@ Complete monitoring solution for homelabs and small infrastructure.
 
 ## Components
 
-- **Prometheus** - Metrics collection and storage
-- **Grafana** - Dashboards and visualization
-- **Alertmanager** - Alert routing and notifications
+- **Prometheus** - Metrics collection
+- **Grafana** - Visualization
+- **Alertmanager** - Alert routing
 - **Loki** - Log aggregation
 - **Promtail** - Log shipping
 - **Node Exporter** - System metrics
@@ -18,40 +18,12 @@ Complete monitoring solution for homelabs and small infrastructure.
 docker-compose up -d
 ```
 
-## Architecture
+## Features
 
-```
-┌──────────────┐     ┌──────────────┐
-│ Node Exporter│────▶│              │
-│ cAdvisor     │────▶│ Prometheus   │
-│ Blackbox     │────▶│              │
-└──────────────┘     └──────┬───────┘
-                            │
-                    ┌───────┴───────┐
-                    │ Alertmanager  │
-                    └───────┬───────┘
-                            │
-                    ┌───────┴───────┐
-                    │   Grafana     │
-                    └───────────────┘
-```
-
-## Dashboards
-
-- System Overview
-- Docker Containers
-- Proxmox Cluster
-- HomeAssistant
-- Network Traffic
-- SSL Certificates
-
-## Alerts
-
-- High CPU usage (>85% for 5m)
-- High Memory usage (>90%)
-- Disk space low (<10% free)
-- Service down
-- SSL certificate expiring (<7 days)
+- Pre-configured alerts
+- Auto-provisioned dashboards
+- Log aggregation
+- Email/Webhook notifications
 
 ## License
 

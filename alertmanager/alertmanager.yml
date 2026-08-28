@@ -1,0 +1,25 @@
+global:
+  smtp_smarthost: 'localhost:587'
+  smtp_from: 'alerts@homelab.local'
+
+route:
+  receiver: 'default'
+  group_by: ['alertname', 'instance']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+    - match:
+        severity: critical
+      receiver: 'critical'
+
+receivers:
+  - name: 'default'
+    email_configs:
+      - to: 'admin@homelab.local'
+
+  - name: 'critical'
+    email_configs:
+      - to: 'admin@homelab.local'
+    webhook_configs:
+      - url: 'http://homeassistant:8123/api/webhook/alert'
